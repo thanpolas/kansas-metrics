@@ -186,7 +186,7 @@ Executes the query, returns a Promise.
 
 > #### kansasMetrics().fetch()
 >
-> *Returns* `Promise(Array.<Object>)` A Promise with the [results][], Kansas Metrics uses the [Bluebird implementation][bluebird].
+> *Returns* `Promise(Array.<Object>)` A Promise with the [results](#results), Kansas Metrics uses the [Bluebird implementation][bluebird].
 
 If no query methods are used then all usage records will be fetched, handle with care.
 
