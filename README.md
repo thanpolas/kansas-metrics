@@ -43,7 +43,7 @@ var query = kansasMetrics();
 
 The following query methods are available:
 
-#### <a name='user'>user()</a>
+#### <a name='user'>`user()` Filter by Owner Id</a>
 
 Query by owning user id.
 
