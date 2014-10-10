@@ -16,11 +16,11 @@ npm install kansas-metrics --save
 
 1. [Overview](#overview)
 1. [API](#api)
-    1. [Query Methods](#query-methods]
+    1. [Query Methods](#query-methods)
         1. [`user()` Filter by Owner Id](#user)
         1. [`token()` Filter by Token Id](#token)
         1. [`from()` and `to()` date filters](#from-to)
-    1. [Query Methods](#execution-methods]
+    1. [Query Methods](#execution-methods)
         1. [Fetching the results](#fetch)
         1. [The Results Data Object](#results)
 
