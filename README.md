@@ -34,8 +34,8 @@ kansasMetrics()
     .from(fromDt)
     .to(toDt)
     .fetch()
-    .then(function(results) {})
-    .catch(function(err) {});
+        .then(function(results) {})
+        .catch(function(err) {});
 ```
 
 ## API
@@ -66,7 +66,7 @@ As a single string:
 kansasMetrics()
     .user('unique uid')
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 You can add multiple `user()` queries:
@@ -77,7 +77,7 @@ kansasMetrics()
     .user('another unique uid')
     .user('one more unique uid')
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 Or as a single array:
@@ -86,7 +86,7 @@ Or as a single array:
 kansasMetrics()
     .user(['unique uid', 'another unique uid', 'one more unique uid'])
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 **[[⬆]](#TOC)**
@@ -107,7 +107,7 @@ As a single string:
 kansasMetrics()
     .token('token id')
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 You can add multiple `token()` queries:
@@ -118,7 +118,7 @@ kansasMetrics()
     .token('another token id')
     .token('one more token id')
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 Or as a single array:
@@ -127,7 +127,7 @@ Or as a single array:
 kansasMetrics()
     .user(['token id', 'another token id', 'one more token id'])
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 **[[⬆]](#TOC)**
@@ -162,7 +162,7 @@ kansasMetrics()
     .from('01-01-2014')
     .to('05-01-2014')
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 As a native Date object:
@@ -173,7 +173,7 @@ var dt = new Date('01-01-2014');
 kansasMetrics()
     .from(dt)
     .fetch()
-    .then(function() {});
+        .then(function(results) {});
 ```
 
 **[[⬆]](#TOC)**
@@ -193,14 +193,14 @@ If no query methods are used then all usage records will be fetched, handle with
 ```js
 kansasMetrics()
     .fetch()
-    .then(function(results) {
-        results.forEach(function(result) {
-            console.log(result);
+        .then(function(results) {
+            results.forEach(function(result) {
+                console.log(result);
+            });
+        })
+        .catch(function(err) {
+            console.error('Error:', err);
         });
-    })
-    .catch(function(err) {
-        console.error('Error:', err);
-    });
 ```
 
 **[[⬆]](#TOC)**
@@ -215,7 +215,7 @@ All results produced by Kansas Metrics are Arrays of Objects. Each Object has th
 * **policyLimit** {number} The limit enforced by the policy if it's of type Limit.
 * **isPolicyCount** {boolean} Indicates if the policity is of type Count.
 * **month** {number} The month this usage item refers to (1-12).
-* **year* {number} The year this usage item refers to.
+* **year** {number} The year this usage item refers to.
 * **date** {string} An ISO 8601 formated date.
 * **period** {string} Stubbed to `month` for now.
 * **usage** {number} The units consumed or remaining depending of the Policy type (count / limit).
