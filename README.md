@@ -16,7 +16,10 @@ npm install kansas-metrics --save
 
 1. [Overview](#overview)
 1. [API](#api)
+    1. [Configuration Methods](#configuration-methods)
+        1. [`setup()` Configure Kansas Metrics](#setup)
     1. [Query Methods](#query-methods)
+        1. [`kansasMetrics()` The base constructor](#kansasMetrics)
         1. [`user()` Filter by Owner Id](#user)
         1. [`token()` Filter by Token Id](#token)
         1. [`from()` and `to()` date filters](#from-to)
@@ -26,8 +29,25 @@ npm install kansas-metrics --save
 
 ## Overview
 
+Kansas Metrics (KM) needs to be setup once per your application boot, the setup process is very easy the only thing you need to do is Inject the Kansas instance to KM:
+
 ```js
-var kansasMetrics = require('kansasMetrics');
+var kansasMetrics = require('kansas-metrics');
+
+// Inject once the current working Kansas instance.
+kansasMetrics.setup(kansas);
+```
+
+Kansas Metrics needs to be initialized for each new query you want to perform:
+
+```js
+var query = kansasMetrics();
+```
+
+You may then add query filters on the returned object:
+
+```js
+var kansasMetrics = require('kansas-metrics');
 
 kansasMetrics()
     .user('unique uid')
@@ -40,15 +60,31 @@ kansasMetrics()
 
 ## API
 
-Kansas Metrics needs to be initialized for each new query you want to perform.
+### Configuration Methods
 
-```js
-var query = kansasMetrics();
-```
+#### <a name='setup'>`setup()` Configure Kansas Metrics</a>
+
+Kansas Metrics needs only be configured once using the `setup(kansas)` method. You have to pass the [Kansas][] instance that your application is currently using and Kansas Metrics will auto-configure based on [Kansas][] settings.
+
+> #### kansasMetrics.setup(kansas)
+>
+>    * **kansas** `Kansas` The instance of [Kansas][] you are using.
+>
+> *Returns* `undefined` Nothing.
+
 
 ### Query Methods
 
-The following query methods are available:
+#### <a name='kansasMetrics'>`kansasMetrics()` The Base Constructor</a>
+
+To start any type of query you need to invoke the Kansas Metrics Constructor which is the function that you get once you require the KM package. Typically the Ctor does not need any arguments but for edge cases you may pass it a [Kansas Instance][kansas] to override the [global settings](#setup) and use the ones defined in the injected Kansas instance.
+
+> #### kansasMetrics(optKansas)
+>
+>    * **optKansas** `Kansas=` Optionally pass a Kansas Instance to override global configuration.
+>
+> *Returns* `self` Chainable.
+
 
 #### <a name='user'>`user()` Filter by Owner Id</a>
 
@@ -213,7 +249,7 @@ All results produced by Kansas Metrics are Arrays of Objects. Each Object has th
 * **ownerId** {string} A string uniquely identifying the owner of the token.
 * **policyName** {string} The name of the policy the token belongs to.
 * **policyLimit** {number} The limit enforced by the policy if it's of type Limit.
-* **isPolicyCount** {boolean} Indicates if the policity is of type Count.
+* **isPolicyCount** {boolean} Indicates if the policy is of type Count.
 * **month** {number} The month this usage item refers to (1-12).
 * **year** {number} The year this usage item refers to.
 * **date** {string} An ISO 8601 formated date.
@@ -232,4 +268,5 @@ All results produced by Kansas Metrics are Arrays of Objects. Each Object has th
 Copyright (c) 2014 Thanasis Polychronakis. Licensed under the MIT license.
 
 [kansas package]: https://github.com/thanpolas/kansas
+[kansas]: https://github.com/thanpolas/kansas
 [bluebird]: https://github.com/petkaantonov/bluebird
