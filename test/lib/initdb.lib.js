@@ -58,7 +58,7 @@ Initdb.prototype.populateUsage = Promise.method(function() {
   var tokenThree = this.kansasInitdb.tokenItemCount.token;
 
   /** @type {?Redis} Redis client */
-  this.client = kansas.conn;
+  this.client = kansas.client;
   this.set = Promise.promisify(this.client.set, this.client);
 
   return this._populateUsageActual(usageFix.oneLimit, tokenOne)
