@@ -30,7 +30,10 @@ describe.only('Base API Surface', function() {
 
   it('should return a Bluebird Promise when invoked', function() {
     kansasMetrics.setup(this.kansas);
-    expect(kansasMetrics()).to.be.instanceof(Promise);
+    var queryObj = kansasMetrics();
+    expect(queryObj.then).to.be.a('function');
+    expect(queryObj.catch).to.be.a('function');
+    expect(queryObj.bind).to.be.a('function');
   });
   it('should have expected methods when invoked', function() {
     kansasMetrics.setup(this.kansas);
