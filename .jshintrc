@@ -134,12 +134,9 @@
     "test": false,
     "describe": false,
     "it": false,
-    "setup": false,
     "before": false,
     "beforeEach": false,
     "after": false,
-    "afterEach": false,
-    "teardown": false,
-    "assert": false
+    "afterEach": false
   }
 }
