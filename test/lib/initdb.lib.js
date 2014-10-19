@@ -34,8 +34,9 @@ var Initdb = module.exports = function () {
 Initdb.prototype.start = Promise.method(function() {
   log.fine('start() :: Init...');
 
-  return this.nuke()
+  return this.kansasInitdb.start()
     .bind(this)
+    .then(this.nuke)
     .then(this.populateUsage);
 });
 
@@ -45,7 +46,6 @@ Initdb.prototype.start = Promise.method(function() {
  * @return {Promise} A promise.
  */
 Initdb.prototype.nuke = function() {
-  return kansas.db.nuke('Yes purge all records irreversably', 'kansas-metrics-test');
 };
 
 Initdb.prototype.populateUsage = function() {
