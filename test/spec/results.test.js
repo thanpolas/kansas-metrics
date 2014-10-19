@@ -116,4 +116,123 @@ describe('Results returned', function() {
           });
     });
   });
+
+  describe('Filtering by date', function () {
+    describe('using "from"', function () {
+      it('should query using "from"', function () {
+        return kansasMetrics()
+          .from('05-01-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(12);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "from" with a day over "01"', function () {
+        return kansasMetrics()
+          .from('05-23-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(12);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "from" with a js Date', function () {
+        var dt = new Date('05-23-2014');
+        return kansasMetrics()
+          .from(dt)
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(12);
+            resultAssert.runAllArray(results);
+          });
+      });
+    });
+    describe('using "to"', function () {
+      it('should query using "to"', function () {
+        return kansasMetrics()
+          .to('05-01-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(15);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "to" with a day over "01"', function () {
+        return kansasMetrics()
+          .to('05-23-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(15);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "to" with a js Date', function () {
+        var dt = new Date('05-23-2014');
+        return kansasMetrics()
+          .to(dt)
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(15);
+            resultAssert.runAllArray(results);
+          });
+      });
+    });
+    describe('using "from" AND "to"', function () {
+      it('should query using "from" AND "to"', function () {
+        return kansasMetrics()
+          .from('03-01-2014')
+          .to('05-01-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(9);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "from" and "to" with a day over "01"', function () {
+        return kansasMetrics()
+          .from('03-24-2014')
+          .to('05-23-2014')
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(9);
+            resultAssert.runAllArray(results);
+          });
+      });
+      it('should query using "from" AND "to" with a js Date', function () {
+        var dtFrom = new Date('03-23-2014');
+        var dtTo = new Date('05-23-2014');
+        return kansasMetrics()
+          .from(dtFrom)
+          .to(dtTo)
+          .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(9);
+            resultAssert.runAllArray(results);
+          });
+      });
+    });
+  });
+
+  describe('Mixing queries', function () {
+    it('should fetch expected results', function () {
+      return kansasMetrics()
+        .from('05-01-2014')
+        .user(tester.OWNER_ONE)
+        .token(this.kansasInitdb.tokenItem.token)
+        .fetch(function(results) {
+          expect(results).to.have.length(4);
+          resultAssert.runAllArray(results);
+        });
+    });
+    it('should fetch no results', function () {
+      return kansasMetrics()
+        .from('05-01-2014')
+        .user(tester.OWNER_TWO)
+        .token(this.kansasInitdb.tokenItem.token)
+        .fetch(function(results) {
+          expect(results).to.have.length(0);
+        });
+    });
+  });
 });
