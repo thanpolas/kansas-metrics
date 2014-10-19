@@ -28,10 +28,10 @@
     "lodash": "~2.4.1"
   },
   "peerDependencies": {
-    "kansas": "^0.2.5"
+    "kansas": "^0.3.2"
   },
   "devDependencies": {
-    "kansas": "^0.2.5",
+    "kansas": "^0.3.2",
     "grunt-release": "~0.7.0",
     "grunt-contrib-jshint": "^0.10.0",
     "load-grunt-tasks": "~0.6.0",
