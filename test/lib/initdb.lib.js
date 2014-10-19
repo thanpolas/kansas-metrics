@@ -3,8 +3,12 @@
  */
 var Kansas = require('kansas');
 var Promise = require('bluebird');
+
+/** @const {string} The db prefix name */
+var DB_NAME = 'kansas-metrics-test';
+
 var kansas = new Kansas({
-  prefix: 'kansas-metrics-test',
+  prefix: DB_NAME,
 });
 
 var log = kansas.logger.getLogger('kansas-metrics.test.initdb');
@@ -17,6 +21,9 @@ var log = kansas.logger.getLogger('kansas-metrics.test.initdb');
 var Initdb = module.exports = function () {
   /** @type {Redis} Redis client */
   this.redis = kansas.conn;
+
+  this.kansasInitdb = new Kansas.Initdb();
+  this.kansasInitdb.dbName = DB_NAME;
 };
 
 /**
