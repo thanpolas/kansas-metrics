@@ -11,6 +11,12 @@ var init = false;
 /** @type {Kansas} Expose kansas instance */
 tester.kansas = null;
 
+/** @type {app.test.Initdb} Expose initdb instance */
+tester.initdb = null;
+
+/** @type {Kansas.Initdb} Expose Kansas initdb instance */
+tester.kansasInitdb = null;
+
 /** @const {string} Owner unique id of kansas generated tokens */
 tester.OWNER_ONE = 'hip';
 /** @const {string} Owner unique id of kansas generated tokens */
@@ -24,12 +30,16 @@ tester.init = function() {
   beforeEach(function(done) {
     if (init) {
       this.kansas = tester.kansas;
+      this.initdb = tester.initdb;
+      this.kansasInitdb = tester.kansasInitdb;
       done();
       return;
     }
     init = true;
 
-    var initdb = new Initdb();
+    var initdb = tester.initdb = this.initdb = new Initdb();
+    this.kansasInitdb = tester.kansasInitdb = initdb.kansasInitdb;
+
     initdb.start()
       .bind(this)
       .then(function() {
