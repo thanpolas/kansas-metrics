@@ -21,6 +21,8 @@ var log = kansas.logger.getLogger('kansas-metrics.test.initdb');
  * @constructor
  */
 var Initdb = module.exports = function () {
+  /** @type {Kansas} Expose kansas instance */
+  this.kansas = kansas;
   /** @type {?Redis} Redis client */
   this.client = null;
   /** @type {?Function} Promisified version of redis SET */
