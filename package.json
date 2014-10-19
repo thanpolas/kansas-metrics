@@ -1,7 +1,7 @@
 {
   "name": "kansas-metrics",
   "version": "0.0.0",
-  "main": "./lib/kansas-metrics",
+  "main": "./lib/lib",
   "description": "Metrics utilities for the Kansas package",
   "homepage": "https://github.com/thanpolas/kansas-metrics",
   "bugs": "https://github.com/thanpolas/kansas-metrics/issues",
@@ -25,7 +25,8 @@
   "dependencies": {
     "cip": "~0.2.5",
     "bluebird": "~2.3.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "nodeon-error": "^0.1.0"
   },
   "peerDependencies": {
     "kansas": "^0.3.2"
