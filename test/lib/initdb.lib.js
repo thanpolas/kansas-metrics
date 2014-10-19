@@ -78,8 +78,6 @@ Initdb.prototype._populateUsageActual = Promise.method(function(fix, token, isCo
     }
     key += token;
 
-    console.log('POP:', key);
-
     return this.set(key, fixObj.usage);
   }, {concurrency: 5});
 });
