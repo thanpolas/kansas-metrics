@@ -2,18 +2,29 @@
  * @fileOverview Main testing helper lib.
  */
 
+var Initdb = require('./initdb.lib');
+
 var tester = module.exports = {};
 
-tester.setup = null;
-tester.teardown = null;
+var init = false;
 
-if (global.setup) {
-  tester.setup = setup;
-  tester.teardown = teardown;
-} else {
-  tester.setup = beforeEach;
-  tester.teardown = afterEach;
-}
+/**
+ * Boot Test facilities.
+ *
+ */
+tester.init = function() {
+  beforeEach(function(done) {
+    if (init) {
+      done();
+      return;
+    }
+    init = true;
+
+    var initdb = new Initdb();
+    initdb.start()
+      .then(done, done);
+  });
+};
 
 /**
  * Have a Cooldown period between tests.
