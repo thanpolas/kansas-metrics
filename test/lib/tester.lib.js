@@ -22,6 +22,7 @@ tester.init = function() {
 
     var initdb = new Initdb();
     initdb.start()
+      .return(null)
       .then(done, done);
   });
 };
