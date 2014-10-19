@@ -21,9 +21,10 @@ var log = kansas.logger.getLogger('kansas-metrics.test.initdb');
  * @constructor
  */
 var Initdb = module.exports = function () {
-  /** @type {Redis} Redis client */
-  this.client = kansas.conn;
-  this.set = Promise.promisify(this.client.set, this.client);
+  /** @type {?Redis} Redis client */
+  this.client = null;
+  /** @type {?Function} Promisified version of redis SET */
+  this.set = null;
 
   this.kansasInitdb = new Kansas.Initdb();
   this.kansasInitdb.dbName = DB_NAME;
@@ -37,7 +38,9 @@ var Initdb = module.exports = function () {
 Initdb.prototype.start = Promise.method(function() {
   log.fine('start() :: Init...');
 
-  return this.kansasInitdb.start()
+  return kansas.connect()
+    .bind(this.kansasInitdb)
+    .then(this.kansasInitdb.start)
     .bind(this)
     .then(this.populateUsage);
 });
@@ -54,12 +57,18 @@ Initdb.prototype.populateUsage = Promise.method(function() {
   var tokenTwo = this.kansasInitdb.tokenItemTwo.token;
   var tokenThree = this.kansasInitdb.tokenItemCount.token;
 
+  /** @type {?Redis} Redis client */
+  this.client = kansas.conn;
+  this.set = Promise.promisify(this.client.set, this.client);
+
   return this._populateUsageActual(usageFix.oneLimit, tokenOne)
     .then(this._populateUsageActual.bind(this, usageFix.twoLimit, tokenTwo))
     .then(this._populateUsageActual.bind(this, usageFix.threeCount, tokenThree, true));
 });
 
 Initdb.prototype._populateUsageActual = Promise.method(function(fix, token, isCount) {
+
+
   return Promise.resolve(fix)
     .bind(this)
     .map(function(fixObj) {
@@ -68,6 +77,8 @@ Initdb.prototype._populateUsageActual = Promise.method(function(fix, token, isCo
       key += 'count:';
     }
     key += token;
+
+    console.log('POP:', key);
 
     return this.set(key, fixObj.usage);
   }, {concurrency: 5});
