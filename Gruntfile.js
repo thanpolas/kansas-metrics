@@ -35,6 +35,13 @@ module.exports = function (grunt) {
         ],
         tasks: ['mochaTest:spec'],
       },
+      unit: {
+        files: [
+          'lib/**/*.js',
+          'test/**/*.js',
+        ],
+        tasks: ['mochaTest:unit'],
+      },
     },
     mochaTest: {
       options: {
@@ -42,6 +49,9 @@ module.exports = function (grunt) {
       },
       spec: {
         src: ['test/spec/*.js']
+      },
+      unit: {
+        src: ['test/unit/*.js']
       }
     },
   });
