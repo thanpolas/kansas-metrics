@@ -27,6 +27,23 @@ module.exports = function (grunt) {
       },
       lib: ['lib/**/*.js'],
     },
+    watch: {
+      spec: {
+        files: [
+          'lib/**/*.js',
+          'test/**/*.js',
+        ],
+        tasks: ['mochaTest:spec'],
+      },
+    },
+    mochaTest: {
+      options: {
+        reporter: 'spec',
+      },
+      spec: {
+        src: ['test/spec/*.js']
+      }
+    },
   });
 
   // Default task.
