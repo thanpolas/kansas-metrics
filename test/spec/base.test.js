@@ -11,7 +11,7 @@ var tester = require('../lib/tester.lib');
 var kansasMetrics = require('../..');
 
 
-describe.only('Base API Surface', function() {
+describe('Base API Surface', function() {
   tester.init();
 
   it('should have expected exposed methods', function() {

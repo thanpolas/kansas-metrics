@@ -12,7 +12,7 @@ var kansasMetrics = require('../..');
 describe('Results returned', function() {
   tester.init();
 
-  before(function () {
+  beforeEach(function () {
     kansasMetrics.setup(this.kansas);
   });
 
@@ -53,7 +53,7 @@ describe('Results returned', function() {
             });
           });
     });
-    it('should allow multiple user chaning', function () {
+    it.only('should allow multiple user chaning', function () {
       return kansasMetrics()
         .user(tester.OWNER_ONE)
         .user(tester.OWNER_TWO)
