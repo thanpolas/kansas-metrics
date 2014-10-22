@@ -18,7 +18,7 @@ describe('Date Range Methods', function () {
 
     var range = fetch._prepareDateKeys();
     expect(range).to.have.length(11);
-    expect(range).to.equal([
+    expect(range).to.deep.equal([
       '2014-05-01',
       '2014-06-01',
       '2014-07-01',
