@@ -53,7 +53,7 @@ describe('Results returned', function() {
             });
           });
     });
-    it.only('should allow multiple user chaning', function () {
+    it('should allow multiple user chaning', function () {
       return kansasMetrics()
         .user(tester.OWNER_ONE)
         .user(tester.OWNER_TWO)
@@ -215,7 +215,7 @@ describe('Results returned', function() {
   });
 
   describe('Mixing queries', function () {
-    it('should fetch expected results', function () {
+    it.only('should fetch expected results', function () {
       return kansasMetrics()
         .from('05-01-2014')
         .user(tester.OWNER_ONE)
