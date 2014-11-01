@@ -68,11 +68,11 @@ resultTest.types = function (item) {
   expect(item.policyName).to.be.a('string');
   expect(item.policyLimit).to.be.a('number');
   expect(item.isPolicyCount).to.be.a('boolean');
-  expect(item.month).to.be.a('string');
-  expect(item.year).to.be.a('string');
+  expect(item.month).to.be.a('number');
+  expect(item.year).to.be.a('number');
   expect(item.date).to.be.a('string');
   expect(item.period).to.be.a('string');
-  expect(item.usage).to.be.a('string');
+  expect(item.usage).to.be.a('number');
 };
 
 /**
