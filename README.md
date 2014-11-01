@@ -58,23 +58,6 @@ kansasMetrics()
         .catch(function(err) {});
 ```
 
-Kansas Metrics returns an augmented [Bluebird Promise](bluebird) which is a Promises A+ compliant library:
-
-```js
-    var query = kansasMetrics();
-
-    // When query executes handle the results
-    query.then(function(results) {});
-    // And handle errors
-    query.catch(function(err) {});
-
-    // filter by user id
-    query.user('unique uid');
-
-    // fetch the results
-    query.fetch();
-```
-
 ## API
 
 ### Configuration Methods
