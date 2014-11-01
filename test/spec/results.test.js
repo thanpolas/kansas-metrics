@@ -105,7 +105,7 @@ describe('Results returned', function() {
             resultAssert.runAllArray(results);
           });
     });
-    it.only('should allow single token input with array', function () {
+    it('should allow single token input with array', function () {
       console.log(this.kansasInitdb.tokenItem.token,
           this.kansasInitdb.tokenItemCount.token);
       return kansasMetrics()
@@ -113,10 +113,7 @@ describe('Results returned', function() {
           this.kansasInitdb.tokenItemCount.token])
         .fetch()
           .then(function(results) {
-            results.forEach(function(item) {
-              console.log(item.token, item.month, item.year);
-            });
-            expect(results).to.have.length(16);
+            expect(results).to.have.length(20);
             resultAssert.runAllArray(results);
           });
     });
@@ -129,7 +126,7 @@ describe('Results returned', function() {
           .from('05-01-2014')
           .fetch()
           .then(function(results) {
-            expect(results).to.have.length(12);
+            expect(results).to.have.length(15);
             resultAssert.runAllArray(results);
           });
       });
@@ -138,7 +135,7 @@ describe('Results returned', function() {
           .from('05-23-2014')
           .fetch()
           .then(function(results) {
-            expect(results).to.have.length(12);
+            expect(results).to.have.length(15);
             resultAssert.runAllArray(results);
           });
       });
@@ -148,7 +145,7 @@ describe('Results returned', function() {
           .from(dt)
           .fetch()
           .then(function(results) {
-            expect(results).to.have.length(12);
+            expect(results).to.have.length(15);
             resultAssert.runAllArray(results);
           });
       });
@@ -229,16 +226,6 @@ describe('Results returned', function() {
           .then(function(results) {
             expect(results).to.have.length(10);
             resultAssert.runAllArray(results);
-          });
-    });
-    it('should fetch no results', function () {
-      return kansasMetrics()
-        .from('05-01-2014')
-        .user(tester.OWNER_TWO)
-        .token(this.kansasInitdb.tokenItem.token)
-        .fetch()
-          .then(function(results) {
-            expect(results).to.have.length(0);
           });
     });
   });
