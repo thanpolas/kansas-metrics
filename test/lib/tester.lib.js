@@ -1,6 +1,8 @@
 /*
  * @fileOverview Main testing helper lib.
  */
+var Promise = require('bluebird');
+Promise.longStackTraces();
 
 var Initdb = require('./initdb.lib');
 
