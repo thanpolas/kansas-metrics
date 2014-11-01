@@ -275,7 +275,7 @@ All results produced by Kansas Metrics are Arrays of Objects. Each Object has th
 
 ## Release History
 
-- **v0.0.1**, *TBD*
+- **v0.0.1**, *01 Nov 2014*
     - Big Bang
 
 ## License
