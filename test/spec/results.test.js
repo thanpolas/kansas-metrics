@@ -21,7 +21,7 @@ describe('Results returned', function() {
       return kansasMetrics()
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(24);
+            expect(results).to.have.length(30);
           });
     });
     it('should fetch results that pass all asserts', function() {
@@ -39,7 +39,7 @@ describe('Results returned', function() {
         .user(tester.OWNER_ONE)
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(16);
+            expect(results).to.have.length(20);
             resultAssert.runAllArray(results);
           });
     });
@@ -59,7 +59,7 @@ describe('Results returned', function() {
         .user(tester.OWNER_TWO)
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(24);
+            expect(results).to.have.length(30);
             resultAssert.runAllArray(results);
           });
     });
@@ -68,7 +68,7 @@ describe('Results returned', function() {
         .user([tester.OWNER_ONE, tester.OWNER_TWO])
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(24);
+            expect(results).to.have.length(30);
             resultAssert.runAllArray(results);
           });
     });
@@ -80,7 +80,7 @@ describe('Results returned', function() {
         .token(this.kansasInitdb.tokenItem.token)
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(8);
+            expect(results).to.have.length(10);
             resultAssert.runAllArray(results);
           });
     });
@@ -92,7 +92,7 @@ describe('Results returned', function() {
           .then(function(results) {
             results.forEach(function(result) {
               expect(result.token).to.equal(this.kansasInitdb.tokenItem.token);
-            });
+            }, this);
           });
     });
     it('should allow multiple token chaning', function () {
@@ -101,16 +101,21 @@ describe('Results returned', function() {
         .token(this.kansasInitdb.tokenItemCount.token)
         .fetch()
           .then(function(results) {
-            expect(results).to.have.length(16);
+            expect(results).to.have.length(20);
             resultAssert.runAllArray(results);
           });
     });
-    it('should allow single token input with array', function () {
+    it.only('should allow single token input with array', function () {
+      console.log(this.kansasInitdb.tokenItem.token,
+          this.kansasInitdb.tokenItemCount.token);
       return kansasMetrics()
         .token([this.kansasInitdb.tokenItem.token,
           this.kansasInitdb.tokenItemCount.token])
         .fetch()
           .then(function(results) {
+            results.forEach(function(item) {
+              console.log(item.token, item.month, item.year);
+            });
             expect(results).to.have.length(16);
             resultAssert.runAllArray(results);
           });
@@ -238,7 +243,7 @@ describe('Results returned', function() {
     });
   });
 
-  describe.only('Data integrity', function () {
+  describe('Data integrity', function () {
     beforeEach(function () {
       return kansasMetrics()
         .from('05-01-2014')
