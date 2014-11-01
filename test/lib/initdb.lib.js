@@ -85,7 +85,6 @@ Initdb.prototype._populateUsageActual = Promise.method(function(fix, token, isCo
       key += 'count:';
     }
     key += token;
-
     return this.set(key, fixObj.usage);
   }, {concurrency: 5});
 });
