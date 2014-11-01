@@ -1,6 +1,6 @@
 {
   "name": "kansas-metrics",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "./lib/lib",
   "description": "Metrics utilities for the Kansas package",
   "homepage": "https://github.com/thanpolas/kansas-metrics",
