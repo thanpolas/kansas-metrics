@@ -215,24 +215,26 @@ describe('Results returned', function() {
   });
 
   describe('Mixing queries', function () {
-    it.only('should fetch expected results', function () {
+    it('should fetch expected results', function () {
       return kansasMetrics()
         .from('05-01-2014')
         .user(tester.OWNER_ONE)
         .token(this.kansasInitdb.tokenItem.token)
-        .fetch(function(results) {
-          expect(results).to.have.length(4);
-          resultAssert.runAllArray(results);
-        });
+        .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(10);
+            resultAssert.runAllArray(results);
+          });
     });
     it('should fetch no results', function () {
       return kansasMetrics()
         .from('05-01-2014')
         .user(tester.OWNER_TWO)
         .token(this.kansasInitdb.tokenItem.token)
-        .fetch(function(results) {
-          expect(results).to.have.length(0);
-        });
+        .fetch()
+          .then(function(results) {
+            expect(results).to.have.length(0);
+          });
     });
   });
 });
