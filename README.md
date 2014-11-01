@@ -17,7 +17,8 @@ npm install kansas-metrics --save
 1. [Overview](#overview)
 1. [API](#api)
     1. [Configuration Methods](#configuration-methods)
-        1. [`setup()` Configure Kansas Metrics](#setup)
+        1. [`setup()` Setup Kansas Metrics](#setup)
+        1. [`options()` Configure Kansas Metrics](#options)
     1. [Query Methods](#query-methods)
         1. [`kansasMetrics()` The base constructor](#kansasMetrics)
         1. [`user()` Filter by Owner Id](#user)
@@ -62,9 +63,9 @@ kansasMetrics()
 
 ### Configuration Methods
 
-#### <a name='setup'>`setup()` Configure Kansas Metrics</a>
+#### <a name='setup'>`setup()` Setup Kansas Metrics</a>
 
-Kansas Metrics needs only be configured once using the `setup(kansas)` method. You have to pass the [Kansas][] instance that your application is currently using and Kansas Metrics will auto-configure based on [Kansas][] settings.
+Kansas Metrics needs only be setup once using the `setup(kansas)` method. You have to pass the [Kansas][] instance that your application is currently using and Kansas Metrics will auto-configure based on [Kansas][] settings.
 
 > #### kansasMetrics.setup(kansas)
 >
@@ -72,6 +73,17 @@ Kansas Metrics needs only be configured once using the `setup(kansas)` method. Y
 >
 > *Returns* `undefined` Nothing.
 
+#### <a name='options'>`options()` Configure Kansas Metrics</a>
+
+> #### kansasMetrics.options(options)
+>
+>    * **options** `Object` A set of options
+>
+> *Returns* `undefined` Nothing.
+
+Available options:
+
+* **concurrency** {number} How many concurrent Redis operations KM should run.
 
 ### Query Methods
 
