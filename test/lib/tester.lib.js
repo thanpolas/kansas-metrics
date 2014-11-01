@@ -63,3 +63,7 @@ tester.cooldown = function(seconds) {
     setTimeout(done, seconds);
   };
 };
+
+/** @type {RegExp} Test an ISO8601 type date */
+tester.reIso8601 = /^(\d{4})(-(\d{2}))??(-(\d{2}))??(T(\d{2}):(\d{2})(:(\d{2}))??(\.(\d+))??(([+-]{1}\d{2}:\d{2})|Z)??)??$/;
+
