@@ -68,9 +68,15 @@ Initdb.prototype.populateUsage = Promise.method(function() {
     .then(this._populateUsageActual.bind(this, usageFix.threeCount, tokenThree, true));
 });
 
+/**
+ * Will populate raw usage keys for testing.
+ *
+ * @param {Array.<Object>} fix Usage fixtures.
+ * @param {string} token The token to use.
+ * @param {boolean} isCount If it's a count usage.
+ * @return {Promise} A promise.
+ */
 Initdb.prototype._populateUsageActual = Promise.method(function(fix, token, isCount) {
-
-
   return Promise.resolve(fix)
     .bind(this)
     .map(function(fixObj) {
