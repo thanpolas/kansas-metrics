@@ -56,6 +56,9 @@ module.exports = function (grunt) {
     },
   });
 
+  grunt.registerTask('start', 'Start all required services', ['startRedis']);
+  grunt.registerTask('stop', 'Stop all services', ['stopRedis']);
+
   // Default task.
   grunt.registerTask('default', []);
 };

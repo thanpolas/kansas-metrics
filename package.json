@@ -42,6 +42,7 @@
     "chai": "~1.9.1",
     "sinon": "~1.10.3",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-services": "0.0.2"
   }
 }
