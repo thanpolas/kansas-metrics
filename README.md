@@ -85,6 +85,8 @@ Available options:
 
 * **concurrency** {number} How many concurrent Redis operations KM should run.
 
+**[[⬆]](#TOC)**
+
 ### Query Methods
 
 #### <a name='kansasMetrics'>`kansasMetrics()` The Base Constructor</a>
@@ -97,6 +99,7 @@ To start any type of query you need to invoke the Kansas Metrics Constructor whi
 >
 > *Returns* `self` Chainable.
 
+**[[⬆]](#TOC)**
 
 #### <a name='user'>`user()` Filter by Owner Id</a>
 
