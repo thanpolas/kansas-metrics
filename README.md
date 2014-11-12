@@ -83,7 +83,7 @@ Kansas Metrics needs only be setup once using the `setup(kansas)` method. You ha
 
 Available options:
 
-* **concurrency** {number} How many concurrent Redis operations KM should run.
+* **concurrency** {number} How many concurrent Redis operations KM should run, default is 10.
 
 **[[⬆]](#TOC)**
 
