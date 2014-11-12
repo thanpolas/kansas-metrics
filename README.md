@@ -275,6 +275,8 @@ All results produced by Kansas Metrics are Arrays of Objects. Each Object has th
 
 ## Release History
 
+- **v0.0.2**, *12 Nov 2014*
+    - Added defenses for bogus token keys, robustness++.
 - **v0.0.1**, *01 Nov 2014*
     - Big Bang
 
